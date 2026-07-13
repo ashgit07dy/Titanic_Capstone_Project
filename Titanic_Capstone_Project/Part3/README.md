@@ -1,4 +1,5 @@
-Part 3: Data Integrity, Row Deduplication, and Memory Footprint Optimization
+Part 3: 
+Data Integrity, Row Deduplication, and Memory Footprint Optimization
 Clean columns don't matter if the underlying rows are redundant or chewing up unnecessary machine resources. Part 3 handles row-level isolation and downcasts underlying object primitives.
 
 3.1 Defensive Row Deduplication
@@ -15,8 +16,9 @@ By default, Pandas stores text strings (Sex column containing male or female) as
 
 Since Sex only has two distinct states, we convert it into a highly efficient category type. This shifts storage from costly string buffers to small underlying integer codes paired with a compact lookup map:
 
-Python
+
 # Optimizing the object schema
+
 df["Sex"] = df["Sex"].astype("category")
 Memory Recovery Metrics:
 Initial DataFrame Footprint: 292,500 bytes
