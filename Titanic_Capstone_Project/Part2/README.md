@@ -1,4 +1,6 @@
-Part 2: Advanced Missing Data Diagnosis and Targeted Imputation Tactics
+Part 2:
+
+Advanced Missing Data Diagnosis and Targeted Imputation Tactics
 Data gaps can severely bias predictive models or crash linear estimators. This part implements a structural auditing step to flag, analyze, and selectively resolve missing data points based on mathematical safety thresholds.
 
 2.1 Null-Value Matrix Profiling
@@ -19,8 +21,9 @@ The pipeline implements an explicit defensive threshold: any feature missing mor
 B. Variance-Preserving Median Imputation (Age)
 Since the age distribution contains distinct life-stage groups and natural bounds, the arithmetic mean is highly sensitive to extreme outlier age groups. To keep the imputation robust:
 
-Python
+
 # Safeguarding against outlier distortion
+
 df["Age"] = df["Age"].fillna(df["Age"].median())
 By filling the 177 gaps with the median, we preserve the central tendency of the distribution without artificially pulling the distribution towards a skewed average.
 
